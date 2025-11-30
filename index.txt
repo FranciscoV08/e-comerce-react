@@ -1,0 +1,16 @@
+
+- Dejar el codigo sin comentarios 
+- Sin console.log()
+- sin fragmentos innecesarios
+- sin variablessin utilizar 
+- seguir propias convenciones ( opcional)
+- 
+
+- Tareas a realizar
+    -realizar un filtro de (/item/:id)
+      - 
+
+    -Darle funcionalidad al carrito, Agregando productos en el 
+        -darle un boton de agregar al carrito al cardItem
+        - ir al carrito y finalizar la compra
+    -realizar una simulacion de compra

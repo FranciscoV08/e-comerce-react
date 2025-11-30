@@ -22,7 +22,6 @@ const CartWidget = ({ producto }) => {
                     <div className="flex justify-between items-center">
                         <div className="space-y-1">
                             <p className="text-2xl font-bold text-gray-900">${producto.price}</p>
-                            {/* <p className="text-sm text-gray-500 line-through">$</p> */}
                         </div>
 
                         <div className="flex items-center gap-1">
@@ -31,11 +30,6 @@ const CartWidget = ({ producto }) => {
                             <span className="text-sm text-gray-600 ml-1">({producto.stock})</span>
                         </div>
                     </div>
-                    {/* <div className="text-center">
-                        <Link to={`/info-producto/${producto.id}`} className="w-full text-indigo-500  font-medium py-3 rounded-lg transition-colors">
-                            More info
-                        </Link>
-                    </div> */}
                 </div>
             </div>
         </Link>

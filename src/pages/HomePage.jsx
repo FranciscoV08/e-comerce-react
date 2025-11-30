@@ -1,26 +1,14 @@
 import { useEffect, useState } from "react"
 import CartWidget from "../components/CartWidget"
-
+import { useProdContext } from "../context/PorductContext"
 
 const HomePage = () => {
 
-  const [productos, setProductos] = useState()
+  //Context de las funcionalidades globales
+  const { obtenerProductos, productos } = useProdContext();
 
   useEffect(() => {
-    const fetchProductos = async () => {
-      try {
-        const res = await fetch('https://dummyjson.com/products')
-        const data = await res.json()
-
-        setProductos(data.products)
-        // console.log(data.products)
-
-      } catch (error) {
-        console.error("Hubo un error en la llamada a la API", error)
-      }
-    }
-
-    fetchProductos()
+    obtenerProductos()
   }, [])
 
   return (
@@ -28,7 +16,10 @@ const HomePage = () => {
 
     <>
       <main>
-        <h1 className='text-center font-bold text-white text-2xl'>Bienvenido a tu tienda de moda favorita</h1>
+        <div className="text-center text-black">
+          <h1 className='text-center font-bold text-2xl'>Bienvenido a tu tienda de moda favorita</h1>
+          <p className='font-light'>Creado por francisco Villavicencio para: <span className='text-sky-500 font-bold'>CODERHOUSE:React</span></p>
+        </div>
         <section className="flex flex-wrap items-center justify-center">
 
           {
@@ -37,7 +28,7 @@ const HomePage = () => {
                 <CartWidget key={product.id} producto={product} />
               ))
             ) : (
-              "No existen productos"
+              "Cargando productos..."
             )
           }
         </section>
