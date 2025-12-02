@@ -1,28 +1,22 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
+import { useProdContext } from "../context/PorductContext"
 
 const ProductInfo = () => {
 
-    const [productoId, setProductoId] = useState()
-
+    //ID del producto seleccionado
     const { id } = useParams()
 
+    const [productoId, setProductoId] = useState(null)
+
+    const {productos, obtenerProductoId} = useProdContext();
+
+    //Cuando carga la pagina filtra de productos y manda al state el producto
     useEffect(() => {
-        const fetchProducto = async () => {
-            try {
+        const data = obtenerProductoId(id)
+        setProductoId(data)
 
-                const res = await fetch(`https://dummyjson.com/products/${id}`)
-                const data = await res.json()
-
-                setProductoId(data)
-                console.log(data)
-            } catch (error) {
-                console.error("Hubo un error en la llamada a la API", error)
-            }
-        }
-
-        fetchProducto()
-    }, [])
+    }, [productos, id])
 
     return (
         productoId ? (

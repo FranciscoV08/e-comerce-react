@@ -2,12 +2,11 @@ import {
     createBrowserRouter
 }
     from 'react-router'
-import ProductoPage from './pages/ProductosPage'
 import HomePage from './pages/HomePage'
 import HeaderLayout from './layouts/HeaderLayout'
-import NuevaModaPage from './pages/NuevaModaPage'
 import ProductInfo from './pages/ProductInfo'
 import SearchProduct from './pages/SearchProduct'
+import ProductFilter from './pages/ProductFilter'
 
 const router = createBrowserRouter([
     {
@@ -20,20 +19,16 @@ const router = createBrowserRouter([
                 element: <HomePage />
             },
             {
-                path: "ofertas",
-                element: <ProductoPage />
-            },
-            {
-                path: "nueva-moda",
-                element: <NuevaModaPage />
-            },
-            {
                 path: "info-producto/:id",
                 element: <ProductInfo />
             },
             {
                 path: "search-producto/:id",
                 element: <SearchProduct />
+            },
+            {
+                path: "product-filter/:id",
+                element: <ProductFilter />
             }
         ]
     }

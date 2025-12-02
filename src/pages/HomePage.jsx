@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react"
+
 import CartWidget from "../components/CartWidget"
-import { useProdContext } from "../context/PorductContext"
+import { useProdContext } from "../context/PorductContext";
 
 const HomePage = () => {
 
   //Context de las funcionalidades globales
-  const { obtenerProductos, productos } = useProdContext();
-
-  useEffect(() => {
-    obtenerProductos()
-  }, [])
+  const { productos } = useProdContext();
 
   return (
-
-
     <>
       <main>
         <div className="text-center text-black">

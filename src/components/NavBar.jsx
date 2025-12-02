@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import carritoI from '../images/carrito-de-compras.png'
+import { Dropdown, DropdownItem } from "flowbite-react";
 
 export const NavBar = () => {
     return (
@@ -9,6 +9,18 @@ export const NavBar = () => {
             <Link className='hover:bg-gray-500 p-2 rounded-xl' to="/">Inicio</Link>
             <Link className='hover:bg-gray-500 p-2 rounded-xl' to="/ofertas">Ofertas</Link>
             <Link className='hover:bg-gray-500 p-2 rounded-xl' to="/nueva-moda">Nueva Moda</Link>
+
+            <Dropdown label="Filtros" dismissOnClick={true}>
+                <Link to={"/product-filter/groceries"}>
+                    <DropdownItem>Comida</DropdownItem>
+                </Link>
+                <Link to={"/product-filter/fragrances"}>
+                    <DropdownItem>Cosmeticos</DropdownItem>
+                </Link>
+                <Link to={"/product-filter/furniture"}>
+                    <DropdownItem>Muebles</DropdownItem>
+                </Link>
+            </Dropdown>
 
         </nav>
 
