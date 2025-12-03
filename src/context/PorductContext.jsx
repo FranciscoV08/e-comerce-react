@@ -29,7 +29,15 @@ const ref = collection(dbFire, "productos");
 // Creamos nuestro contexto provider -- para proveer todos los valores globales
 export const ProductContextProvider = ({ children }) => {
 
+const [carrito, setCarrito] = useState(() => {
+    if (typeof window !== "undefined") {
+        const carritoLS = localStorage.getItem("carrito");
+        return carritoLS ? JSON.parse(carritoLS) : [];
+    }
+    return [];
+});
     const [productos, setProductos] = useState()
+
 
     const obtenerProductos = async () => {
         try {
@@ -70,20 +78,52 @@ export const ProductContextProvider = ({ children }) => {
         try {
             if (productos.length >= 0) {
                 const prodFilter = productos.filter(prod => prod.category == categoria)
-                
+
                 return prodFilter
             }
         } catch (error) {
             console.log(error)
         }
     }
+    const agregarAlCarrito = (producto) => {
+        setCarrito(prev => {
 
+            const existe = prev.find(item => item.id === producto.id);
+
+            if (existe) {
+                // Si ya está en el carrito → aumentar cantidad
+                return prev.map(item =>
+                    item.id === producto.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                );
+            }
+
+            // Si no existe → agregarlo con quantity 1
+            return [...prev, { ...producto, quantity: 1 }];
+        });
+
+    }
+     const calcularSubtotal = () => {
+        return carrito.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    };
+    
 
     useEffect(() => {
         obtenerProductos()
-        console.log(productos)
+        
+        const carritoLS = localStorage.getItem("carrito");
+        
+        if (carritoLS) {
+            setCarrito(JSON.parse(carritoLS));
+        }
+        console.log(carritoLS)
 
     }, [])
+
+    useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}, [carrito]);
 
 
 
@@ -94,6 +134,9 @@ export const ProductContextProvider = ({ children }) => {
             obtenerProductos,
             obtenerProductoId,
             obtenerProdFilter,
+            agregarAlCarrito,
+            calcularSubtotal,
+            carrito,
             productos
         }}>
             {children}

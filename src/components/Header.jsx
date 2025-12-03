@@ -18,7 +18,7 @@ export const Header = () => {
 
   return (
     <div className='bg-green-700 text-white mb-5 rounded-lg py-5'>
-      <section className='flex items-center justify-center '>
+      <section className='flex items-center justify-center my-5'>
         <div className='w-1/4'>
           <h2 className="text-3xl font-">Vicencio</h2>
         </div>
@@ -42,9 +42,11 @@ export const Header = () => {
             </div>
           </form>
         </div>
+        <Link to={"/carrito-products"}>
           <div className='mx-5'>
             <img className='w-10' src={carritoI} alt="carrito.png" />
           </div>
+        </Link>
       </section>
 
       <div>

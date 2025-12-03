@@ -7,6 +7,7 @@ import HeaderLayout from './layouts/HeaderLayout'
 import ProductInfo from './pages/ProductInfo'
 import SearchProduct from './pages/SearchProduct'
 import ProductFilter from './pages/ProductFilter'
+import CarritoPage from './pages/CarritoPage'
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
                 element: <HomePage />
             },
             {
+                path: "carrito-products",
+                element: <CarritoPage />
+            },
+            {
                 path: "info-producto/:id",
                 element: <ProductInfo />
             },
@@ -29,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: "product-filter/:id",
                 element: <ProductFilter />
-            }
+            },
         ]
     }
 ])
