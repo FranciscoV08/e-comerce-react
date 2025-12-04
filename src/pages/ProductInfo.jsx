@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { useProdContext } from "../context/PorductContext"
 import { Spinner } from "flowbite-react";
+import { toast } from "react-toastify";
 
 const ProductInfo = () => {
 
@@ -21,10 +22,10 @@ const ProductInfo = () => {
             quantity: 1 
         }
         
+        toast.success("Producto agregado al carrito!");
         agregarAlCarrito(prodObj)
         
     }
-    //console.log(carrito)
 
 
     //Cuando carga la pagina filtra de productos y manda al state el producto

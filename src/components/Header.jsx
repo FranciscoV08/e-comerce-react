@@ -3,11 +3,12 @@ import { NavBar } from './NavBar'
 import { useState } from 'react'
 
 import carritoI from '../images/carrito-de-compras.png'
-
+import { useProdContext } from '../context/PorductContext'
 
 export const Header = () => {
 
   const [search, setSearch] = useState()
+  const {carrito} = useProdContext()
 
   const navigate = useNavigate()
 
@@ -15,7 +16,6 @@ export const Header = () => {
     e.preventDefault()
     navigate(`search-producto/${search}`)
   }
-
   return (
     <div className='bg-green-700 text-white mb-5 rounded-lg py-5'>
       <section className='flex items-center justify-center my-5'>
@@ -42,9 +42,13 @@ export const Header = () => {
             </div>
           </form>
         </div>
-        <Link to={"/carrito-products"}>
-          <div className='mx-5'>
+        <Link className='flex items-center' to={"/carrito-products"}>
+          <div className='ml-5 '>
             <img className='w-10' src={carritoI} alt="carrito.png" />
+          </div>
+
+          <div>
+            <p className='ml-2 text-gray-300 bg-green-500 px-2 rounded-2xl'>{carrito.length}</p>
           </div>
         </Link>
       </section>

@@ -66,7 +66,7 @@ const [carrito, setCarrito] = useState(() => {
     }
     const obtenerProductoId = (id) => {
         try {
-            if (productos.length >= 0) {
+            if (productos != undefined) {
                 const productId = productos.find(prod => prod.id == id)
                 return productId
             }
@@ -76,7 +76,7 @@ const [carrito, setCarrito] = useState(() => {
     }
     const obtenerProdFilter = (categoria) => {
         try {
-            if (productos.length >= 0) {
+            if (productos != undefined) {
                 const prodFilter = productos.filter(prod => prod.category == categoria)
 
                 return prodFilter
@@ -107,7 +107,10 @@ const [carrito, setCarrito] = useState(() => {
      const calcularSubtotal = () => {
         return carrito.reduce((acc, item) => acc + item.price * item.quantity, 0);
     };
-    
+    const limpiarCarrito = () => {
+    setCarrito([]);
+    localStorage.removeItem("carrito");
+};
 
     useEffect(() => {
         obtenerProductos()
@@ -117,7 +120,6 @@ const [carrito, setCarrito] = useState(() => {
         if (carritoLS) {
             setCarrito(JSON.parse(carritoLS));
         }
-        console.log(carritoLS)
 
     }, [])
 
@@ -136,6 +138,7 @@ const [carrito, setCarrito] = useState(() => {
             obtenerProdFilter,
             agregarAlCarrito,
             calcularSubtotal,
+            limpiarCarrito,
             carrito,
             productos
         }}>

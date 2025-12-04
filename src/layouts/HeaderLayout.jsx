@@ -8,6 +8,7 @@ const HeaderLayout = () => {
                 {/* Mi header de navegador */}
                 <Header />
             </header>
+            
             <Outlet />
         </>
     )

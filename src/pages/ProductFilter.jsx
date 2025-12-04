@@ -11,7 +11,6 @@ const ProductFilter = () => {
   useEffect(() => {
     const dataFilter = obtenerProdFilter(id)
     if (dataFilter) {
-      console.log(dataFilter)
       setProdFilter(dataFilter)
     }
 

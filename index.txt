@@ -7,8 +7,7 @@
 - 
 
 - Tareas a realizar
-    -realizar un filtro de (/item/:id)
-      - 
+    ---> realizar un filtro de (/item/:id) (LISTO)
 
     -Darle funcionalidad al carrito, Agregando productos en el 
         -darle un boton de agregar al carrito al cardItem
